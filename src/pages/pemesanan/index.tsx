@@ -623,7 +623,7 @@ const OrderDetailsDialog: React.FC<{ order: Order | null; isOpen: boolean; onClo
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="sm:max-w-2xl p-0 bg-background">
-                <DialogHeader className="p-6 rounded-t-lg bg-gradient-to-br from-violet-50 to-fuchsia-50">
+                <DialogHeader className="p-6 rounded-t-lg bg-gradient-to-br from-violet-50 to-fuchsia-50 border-b-0">
                     <div className="flex justify-between items-start">
                         <div>
                             <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
