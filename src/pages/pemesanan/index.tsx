@@ -35,7 +35,6 @@ import {
     Building,
     Phone,
     FileText,
-    X,
     FolderClock,
     BadgeCheck,
     ListTodo,
@@ -49,9 +48,6 @@ import {
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { DateRange } from "react-day-picker";
-
-// FIX: Add a dummy tailwind object to prevent ReferenceError in some environments
-const tailwind = {};
 
 // =========================================================================
 // 1. DEFINISI TIPE DATA DAN MOCK DATA
@@ -742,19 +738,6 @@ export default function ConsumptionOrderPage() {
     const [date, setDate] = React.useState<DateRange | undefined>({ from: new Date(new Date().setHours(0,0,0,0)), to: undefined });
     const [activeStatusFilter, setActiveStatusFilter] = useState<OrderStatus | 'All'>('All');
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-    const [isOrderTimeLocked, setIsOrderTimeLocked] = useState(false);
-
-    useEffect(() => {
-        const checkTime = () => {
-            const currentHour = new Date().getHours();
-            if (currentHour >= 14) {
-                setIsOrderTimeLocked(true);
-            }
-        };
-        checkTime();
-        const interval = setInterval(checkTime, 60000); // Check every minute
-        return () => clearInterval(interval);
-    }, []);
 
 
     const filteredHistory = useMemo(() => {

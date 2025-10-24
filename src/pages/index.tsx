@@ -28,7 +28,6 @@ import {
     CheckCircle,
     Clock,
     XCircle,
-    ChevronUp,
     MapPin,
     Package,
     User,
@@ -44,8 +43,6 @@ import {
     CakeSlice,
     Truck,
     Activity,
-    Info,
-    TriangleAlert,
     UserCheck,
     ChevronsUpDown,
     Check,
@@ -53,7 +50,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext } from "@/components/ui/pagination";
 import { DateRange } from "react-day-picker";
 // Sidebar components are provided via the global AppLayout for pages (see src/components/app-layout.tsx)
 
@@ -1489,8 +1485,6 @@ export default function ConsumptionOrderPage() {
 
         return orders;
     }, [history, date, activeStatusFilter]);
-
-    const totalPages = Math.max(1, Math.ceil(filteredHistory.length / perPage));
 
     const paginatedHistory = useMemo(() => {
         const start = (currentPage - 1) * perPage;
