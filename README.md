@@ -1,161 +1,41 @@
-# Konsumsi - Sistem Pemesanan Konsumsi Karyawan
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-Aplikasi web untuk mengelola pemesanan konsumsi karyawan PT Pupuk Kujang Cilegon.
+## Getting Started
 
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ atau 20+
-- npm atau yarn
-
-### Installation
+First, run the development server:
 
 ```bash
-# Clone repository
-git clone https://github.com/si23nadiaaddnan-a11y/projek-konsumsi.git
-cd projek-konsumsi
-
-# Install dependencies
-npm install
-
-# Run development server
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📦 Available Scripts
+You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-```bash
-# Development
-npm run dev          # Jalankan development server
+[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-# Production
-npm run build        # Build untuk production
-npm run start        # Jalankan production server
+The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
 
-# Code Quality
-npm run lint         # Check linting errors
-```
+This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## 🏗️ Tech Stack
+## Learn More
 
-- **Framework**: Next.js 15.5.4 (Pages Router)
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 3.4.18
-- **UI Components**: Radix UI + shadcn/ui
-- **Animation**: Framer Motion 12.23.22
-- **Icons**: Lucide React
-- **Date Handling**: date-fns + react-day-picker
+To learn more about Next.js, take a look at the following resources:
 
-## 📁 Project Structure
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
 
-```
-src/
-├── pages/              # Next.js Pages
-│   ├── index.tsx       # Halaman Konsumsi (Main)
-│   ├── pemesanan/      # Halaman Pemesanan
-│   ├── api/            # API Routes
-│   ├── _app.tsx        # App Wrapper
-│   └── _document.tsx   # Document Configuration
-├── components/
-│   └── ui/             # Reusable UI Components (40+)
-├── hooks/              # Custom React Hooks
-├── lib/                # Utilities
-└── styles/             # Global CSS
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## ✨ Features
+## Deploy on Vercel
 
-### Modul Pemesanan Konsumsi
-- ✅ Form pemesanan dinamis dengan validasi
-- ✅ Cascading selection (Tipe Tamu → Waktu → Menu → Satuan)
-- ✅ Multiple items per order
-- ✅ Review dialog sebelum submit
-- ✅ Success animation
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Manajemen Riwayat
-- ✅ Filter by status (All/Pending/Approved/Rejected)
-- ✅ Filter by date range
-- ✅ View mode: Grid Cards / List View
-- ✅ Pagination (6 items/page)
-- ✅ Detail dialog dengan timeline
-- ✅ Delete & Cancel orders
-
-### UI/UX
-- ✅ Responsive design (Mobile-first)
-- ✅ Dark mode ready
-- ✅ Smooth animations
-- ✅ Searchable dropdowns
-
-## 🚀 Deployment
-
-### Deploy ke Vercel
-
-1. **Push ke GitHub**
-   ```bash
-   git add .
-   git commit -m "ready for deployment"
-   git push origin main
-   ```
-
-2. **Deploy via Vercel Dashboard**
-   - Login ke [vercel.com](https://vercel.com)
-   - Klik "Add New Project"
-   - Import repository ini
-   - Klik "Deploy"
-
-3. **Deploy via CLI**
-   ```bash
-   npm i -g vercel
-   vercel login
-   vercel --prod
-   ```
-
-### Environment Variables (Optional)
-Jika diperlukan, tambahkan di Vercel Dashboard → Settings → Environment Variables:
-```
-NEXT_PUBLIC_API_URL=your_api_url
-```
-
-## 📊 Build Information
-
-- **Build Status**: ✅ Passing
-- **Bundle Size**: ~125 KB (gzip)
-- **Performance**: Optimized static pages
-- **TypeScript**: Strict mode enabled
-
-## 🔧 Development Notes
-
-### Known Warnings
-- `use-toast.ts`: Minor warning tentang `actionTypes` (tidak mempengaruhi functionality)
-
-### Removed Features
-- Sidebar navigation (currently simplified for main content focus)
-- Layout wrapper (simplified in `_app.tsx`)
-
-## 📝 API Routes
-
-- `/api/hello` - Test endpoint
-
-## 🎨 Color Scheme
-
-Primary colors:
-- Violet: `#8b5cf6` - `#d946ef`
-- Fuchsia: `#d946ef` - `#f472b6`
-
-## 📄 License
-
-This project is proprietary and confidential.
-
-## 👥 Contributors
-
-- Nadia Addnan (si23nadiaaddnan-a11y)
-
-## 📞 Support
-
-Untuk pertanyaan atau issue, silakan buat issue di repository ini.
-
----
-
-**Note**: Project ini sudah production-ready dan siap di-deploy ke Vercel! ✅
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+# projek-konsumsi

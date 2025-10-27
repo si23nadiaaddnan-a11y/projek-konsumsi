@@ -592,38 +592,208 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ history, onDelete, onViewDe
     return (
         <div className="w-full mt-4 min-h-[50vh]">
             {!hasHistory ? (
-                <div className="h-full flex items-center justify-center text-center text-muted-foreground rounded-xxl border-2 border-dashed p-8">
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                       <motion.div
-                            whileHover={{ scale: 1.1, rotate: -5 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="cursor-pointer"
-                        >
-                            {/* [DIPERBAIKI] Mengganti SVG kustom dengan ikon CakeSlice */}
-                            <CakeSlice className="h-20 w-20 text-muted-foreground/60" />
-                        </motion.div>
-                         <div className="text-center sm:text-left">
-                            <span className="text-lg font-semibold text-foreground/80 block">Belum Ada Pesanan</span>
-                            <p className="text-muted-foreground max-w-xs text-sm">Tidak ada data pesanan yang cocok dengan filter yang Anda pilih.</p>
+                <div className="h-full flex items-center justify-center text-center text-muted-foreground rounded-xxl border-2 border-dashed p-8 min-h-[400px]">
+                    <div className="flex flex-col items-center justify-center gap-3 w-full">
+                        <div className="relative">
+                            {/* Gambar dengan animasi goyang halus */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ 
+                                    opacity: 1, 
+                                    y: 0,
+                                }}
+                                transition={{ duration: 0.5 }}
+                                className="relative"
+                            >
+                                <motion.img
+                                    src="/whale.png"
+                                    alt="Belum ada pesanan"
+                                    className="h-60 w-60"
+                                    animate={{ 
+                                        rotate: [0, -4, 4, -3, 3, -2, 2, 0],
+                                        y: [0, -3, 0, -2, 0, -1, 0]
+                                    }}
+                                    transition={{
+                                        duration: 2.5,
+                                        repeat: Infinity,
+                                        repeatDelay: 1.5,
+                                        ease: "easeInOut"
+                                    }}
+                                    style={{
+                                        transformOrigin: "center center"
+                                    }}
+                                />
+                            </motion.div>
+                            
+                            {/* Efek Garis Getar untuk menunjukkan goyang */}
+                            <motion.div
+                                className="absolute left-8 top-1/2 w-1 h-24 bg-violet-300/20 rounded-full blur-sm"
+                                animate={{
+                                    opacity: [0, 0.6, 0],
+                                    x: [-8, 0, 8, 0, -8],
+                                    scaleY: [0.8, 1, 0.8]
+                                }}
+                                transition={{
+                                    duration: 2.5,
+                                    repeat: Infinity,
+                                    repeatDelay: 1.5,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                            <motion.div
+                                className="absolute right-8 top-1/2 w-1 h-24 bg-violet-300/20 rounded-full blur-sm"
+                                animate={{
+                                    opacity: [0, 0.6, 0],
+                                    x: [8, 0, -8, 0, 8],
+                                    scaleY: [0.8, 1, 0.8]
+                                }}
+                                transition={{
+                                    duration: 2.5,
+                                    repeat: Infinity,
+                                    repeatDelay: 1.5,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                            
+                            {/* Partikel debu/efek goyang dari kardus */}
+                            <motion.div
+                                className="absolute bottom-20 left-1/4"
+                                animate={{
+                                    y: [0, -25, -40],
+                                    x: [-8, 5, -12],
+                                    opacity: [0, 0.6, 0],
+                                    scale: [0.3, 1.2, 0.3]
+                                }}
+                                transition={{
+                                    duration: 1.8,
+                                    repeat: Infinity,
+                                    repeatDelay: 2.2,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <div className="w-2.5 h-2.5 rounded-full bg-slate-400/50 blur-[1px]" />
+                            </motion.div>
+                            <motion.div
+                                className="absolute bottom-20 right-1/4"
+                                animate={{
+                                    y: [0, -30, -45],
+                                    x: [8, -5, 12],
+                                    opacity: [0, 0.6, 0],
+                                    scale: [0.3, 1.2, 0.3]
+                                }}
+                                transition={{
+                                    duration: 1.8,
+                                    repeat: Infinity,
+                                    repeatDelay: 2.2,
+                                    delay: 0.4,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <div className="w-2 h-2 rounded-full bg-slate-400/50 blur-[1px]" />
+                            </motion.div>
+                            <motion.div
+                                className="absolute bottom-24 left-1/3"
+                                animate={{
+                                    y: [0, -20, -35],
+                                    x: [0, -8, 0],
+                                    opacity: [0, 0.5, 0],
+                                    scale: [0.4, 1, 0.4]
+                                }}
+                                transition={{
+                                    duration: 1.8,
+                                    repeat: Infinity,
+                                    repeatDelay: 2.2,
+                                    delay: 0.2,
+                                    ease: "easeOut"
+                                }}
+                            >
+                                <div className="w-1.5 h-1.5 rounded-full bg-slate-400/40 blur-[1px]" />
+                            </motion.div>
                         </div>
+                        
+                        {/* Teks dengan animasi shake */}
+                        <motion.div 
+                            className="text-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ 
+                                opacity: 1, 
+                                y: 0,
+                            }}
+                            transition={{ delay: 0.3 }}
+                        >  
+                            <motion.span 
+                                className="text-xl font-bold text-foreground/90 block mb-2"
+                                animate={{
+                                    x: [0, -1.5, 1.5, -1, 1, 0]
+                                }}
+                                transition={{
+                                    duration: 0.5,
+                                    repeat: Infinity,
+                                    repeatDelay: 4,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                Belum Ada Pesanan
+                            </motion.span>
+                            <p className="text-muted-foreground max-w-xs text-sm">
+                                Tidak ada data pesanan yang cocok dengan filter yang Anda pilih.
+                            </p>
+                            <motion.p 
+                                className="text-violet-500 text-xs mt-2 font-medium"
+                                animate={{
+                                    opacity: [0.5, 1, 0.5]
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                            </motion.p>
+                        </motion.div>
                     </div>
                 </div>
-            ) : (
-                <AnimatePresence>
-                    {viewMode === 'grid' ? (
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                            {history.map(order => (<motion.div key={order.id} layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.2 }}><OrderCard order={order} onDelete={onDelete} onViewDetails={onViewDetails} /></motion.div>))}
-                        </div>
-                    ) : (
-                        <div className="space-y-3">
-                            {history.map(order => (<motion.div key={order.id} layout initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}><OrderListItem order={order} onDelete={onDelete} onViewDetails={onViewDetails} /></motion.div>))}
-                        </div>
-                    )}
-                </AnimatePresence>
-            )}
-        </div>
-    );
-};
+      ) : (
+        <AnimatePresence>
+          {viewMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {history.map(order => (
+                <motion.div 
+                  key={order.id} 
+                  layout 
+                  initial={{ opacity: 0, scale: 0.9 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  exit={{ opacity: 0, scale: 0.9 }} 
+                  transition={{ duration: 0.2 }}
+                >
+                  <OrderCard order={order} onDelete={onDelete} onViewDetails={onViewDetails} />
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {history.map(order => (
+                <motion.div 
+                  key={order.id} 
+                  layout 
+                  initial={{ opacity: 0, x: -20 }} 
+                  animate={{ opacity: 1, x: 0 }} 
+                  exit={{ opacity: 0, x: -20 }} 
+                  transition={{ duration: 0.2 }}
+                >
+                  <OrderListItem order={order} onDelete={onViewDetails} onViewDetails={onViewDetails} />
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </AnimatePresence>
+      )}
+    </div>
+  );
+}
+
+
+
 
 
 // =========================================================================
