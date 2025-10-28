@@ -26,11 +26,43 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Hide scrollbar globally */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Hide all scrollbars globally */
 * {
   box-sizing: border-box;
   margin: 0;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Ensure main content area has no scrollbar */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#__next::-webkit-scrollbar,
+main::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body,
+#__next,
+main,
+div {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 a {
@@ -127,4 +159,37 @@ a {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Hide Scrollbar but keep scroll functionality */
+.scrollbar-thin {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* These classes are kept for backwards compatibility but have no effect */
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thumb-slate-300::-webkit-scrollbar-thumb {
+  background: rgb(203 213 225);
+  border-radius: 3px;
+}
+
+.scrollbar-thumb-slate-300::-webkit-scrollbar-thumb:hover {
+  background: rgb(148 163 184);
+}
+
+.dark .scrollbar-thumb-slate-700::-webkit-scrollbar-thumb {
+  background: rgb(51 65 85);
+  border-radius: 3px;
+}
+
+.dark .scrollbar-thumb-slate-700::-webkit-scrollbar-thumb:hover {
+  background: rgb(71 85 105);
 }
