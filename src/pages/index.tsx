@@ -135,137 +135,8 @@ const eightDaysAgo = new Date(today);
 eightDaysAgo.setDate(eightDaysAgo.getDate() - 8);
 
 
-const mockHistory: Order[] = [
-    {
-        id: "ORD001",
-        kegiatan: "Rapat Koordinasi Bulanan",
-        tanggalPengiriman: today,
-        status: 'Approved',
-        tanggalPermintaan: new Date(),
-        untukBagian: "Dep. Teknologi Informasi PKC (C001370000)",
-        yangMengajukan: "Riza Ilhamsyah (12231149)",
-        noHp: "08112345678",
-        namaApprover: "Jojok Satriadi (1140122)",
-        tipeTamu: "Standar", // [DIKEMBALIKAN]
-        keterangan: "Tolong siapkan 5 porsi vegetarian.",
-        items: [{
-            jenisKonsumsi: "Nasi Box",
-            qty: 35,
-            satuan: "Box",
-            lokasiPengiriman: "Ruang Rapat Utama Lt. 2",
-            sesiWaktu: "Siang",
-            waktu: "12:00",
-        }]
-    },
-    {
-        id: "ORD002",
-        kegiatan: "Kunjungan Investor",
-        tanggalPengiriman: today,
-        status: 'Pending',
-        tanggalPermintaan: new Date(),
-        untukBagian: "Dep. Teknologi Informasi PKC (C001370000)",
-        yangMengajukan: "Riza Ilhamsyah (12231149)",
-        noHp: "08229876543",
-        namaApprover: "Direktur Utama",
-        tipeTamu: "VIP", // [DIKEMBALIKAN]
-        keterangan: "Konsumsi VIP, menu premium.",
-        items: [{
-            jenisKonsumsi: "Prasmanan",
-            qty: 15,
-            satuan: "Pax",
-            lokasiPengiriman: "Aula Serbaguna",
-            sesiWaktu: "Siang",
-            waktu: "11:30",
-        }]
-    },
-    {
-        id: "ORD003",
-        kegiatan: "Workshop Pemasaran Digital",
-        tanggalPengiriman: tomorrow,
-        status: 'Rejected',
-        tanggalPermintaan: new Date(),
-        untukBagian: "Dep. Teknologi Informasi PKC (C001370000)",
-        yangMengajukan: "Riza Ilhamsyah (12231149)",
-        noHp: "08551231233",
-        namaApprover: "Kepala Bagian C",
-        tipeTamu: "Regular", // [DIKEMBALIKAN]
-        keterangan: "Mohon sediakan kopi low acid.",
-        items: [{
-            jenisKonsumsi: "Snack Box",
-            qty: 50,
-            satuan: "Box",
-            lokasiPengiriman: "Ruang Meeting Anggrek",
-            sesiWaktu: "Sore",
-            waktu: "15:00",
-        }]
-    },
-    {
-        id: "ORD004",
-        kegiatan: "Pelatihan Karyawan Baru",
-        tanggalPengiriman: nextWeek,
-        status: 'Pending',
-        tanggalPermintaan: new Date(),
-        untukBagian: "Dep. Teknologi Informasi PKC (C001370000)",
-        yangMengajukan: "Riza Ilhamsyah (12231149)",
-        noHp: "08123456789",
-        namaApprover: "Manajer Divisi B",
-        tipeTamu: "Regular", // [DIKEMBALIKAN]
-        keterangan: "",
-        items: [{
-            jenisKonsumsi: "Snack Box",
-            qty: 25,
-            satuan: "Box",
-            lokasiPengiriman: "Ruang Pelatihan",
-            sesiWaktu: "Pagi",
-            waktu: "09:00",
-        }]
-    },
-    {
-        id: "ORD005",
-        kegiatan: "Evaluasi Kinerja Triwulan",
-        tanggalPengiriman: threeDaysAgo,
-        status: 'Approved',
-        tanggalPermintaan: threeDaysAgo,
-        untukBagian: "Dep. Keuangan (C001380000)",
-        yangMengajukan: "Siti Aminah (12231150)",
-        noHp: "08123450987",
-        namaApprover: "Jojok Satriadi (1140122)",
-        tipeTamu: "Standar", // [DIKEMBALIKAN]
-        keterangan: "Snack pagi dan makan siang.",
-        items: [
-            { jenisKonsumsi: "Snack Box", qty: 20, satuan: "Box", lokasiPengiriman: "Ruang Rapat Melati", sesiWaktu: "Pagi", waktu: "09:30" },
-            { jenisKonsumsi: "Nasi Box", qty: 20, satuan: "Box", lokasiPengiriman: "Ruang Rapat Melati", sesiWaktu: "Siang", waktu: "12:15" },
-        ]
-    },
-    {
-        id: "ORD006",
-        kegiatan: "Sosialisasi Produk Baru",
-        tanggalPengiriman: sixDaysAgo,
-        status: 'Pending',
-        tanggalPermintaan: sixDaysAgo,
-        untukBagian: "Dep. Pemasaran (C001390000)",
-        yangMengajukan: "Budi Santoso (12231151)",
-        noHp: "08765432109",
-        namaApprover: "Kepala Bagian C",
-        tipeTamu: "Regular", // [DIKEMBALIKAN]
-        keterangan: "",
-        items: [{ jenisKonsumsi: "Coffee Break", qty: 40, satuan: "Pax", lokasiPengiriman: "Aula Serbaguna", sesiWaktu: "Sore", waktu: "15:30" }]
-    },
-    {
-        id: "ORD007",
-        kegiatan: "Meeting Kick-off Proyek X",
-        tanggalPengiriman: eightDaysAgo,
-        status: 'Approved',
-        tanggalPermintaan: eightDaysAgo,
-        untukBagian: "Dep. Teknologi Informasi PKC (C001370000)",
-        yangMengajukan: "Riza Ilhamsyah (12231149)",
-        noHp: "08112345678",
-        namaApprover: "Jojok Satriadi (1140122)",
-        tipeTamu: "Standar", // [DIKEMBALIKAN]
-        keterangan: "Hanya kopi dan teh.",
-        items: [{ jenisKonsumsi: "Coffee Break", qty: 15, satuan: "Pax", lokasiPengiriman: "Ruang Rapat Utama Lt. 2", sesiWaktu: "Pagi", waktu: "10:00" }]
-    }
-];
+eightDaysAgo.setDate(eightDaysAgo.getDate() - 8);
+
 
 // [DIPERBAIKI] initialFormData disesuaikan dengan struktur 'groups' dan 'subItems'
 const initialFormData: FormData = {
@@ -584,14 +455,14 @@ interface OrderHistoryProps {
     onDelete: (order: Order) => void;
     onViewDetails: (order: Order) => void;
     viewMode: 'grid' | 'list';
+    totalHistoryCount: number; // [BARU] Total history tanpa filter
 }
 
-const OrderHistory: React.FC<OrderHistoryProps> = ({ history, onDelete, onViewDetails, viewMode }) => {
-    const hasHistory = history.length > 0;
-
+const OrderHistory: React.FC<OrderHistoryProps> = ({ history, onDelete, onViewDetails, viewMode, totalHistoryCount }) => {
     return (
         <div className="w-full mt-4 min-h-[50vh]">
-            {!hasHistory ? (
+            {/* Tampilkan empty state jika tidak ada history ATAU tidak ada hasil yang ditampilkan */}
+            {history.length === 0 ? (
                 <div className="h-full flex items-center justify-center text-center text-muted-foreground rounded-xxl border-2 border-dashed p-8 min-h-[400px]">
                     <div className="flex flex-col items-center justify-center gap-3 w-full">
                         <div className="relative">
@@ -733,27 +604,18 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ history, onDelete, onViewDe
                                     ease: "easeInOut"
                                 }}
                             >
-                                Belum Ada Pesanan
+                                {totalHistoryCount === 0 ? "Belum Ada Pesanan" : "Tidak Ada Hasil"}
                             </motion.span>
                             <p className="text-muted-foreground max-w-xs text-sm">
-                                Tidak ada data pesanan yang cocok dengan filter yang Anda pilih.
+                                {totalHistoryCount === 0 
+                                    ? "Tidak ada data pesanan yang cocok dengan filter yang Anda pilih."
+                                    : "Tidak ada data pesanan yang cocok dengan filter yang Anda pilih."
+                                }
                             </p>
-                            <motion.p 
-                                className="text-violet-500 text-xs mt-2 font-medium"
-                                animate={{
-                                    opacity: [0.5, 1, 0.5]
-                                }}
-                                transition={{
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    ease: "easeInOut"
-                                }}
-                            >
-                            </motion.p>
                         </motion.div>
                     </div>
                 </div>
-      ) : (
+            ) : (
         <AnimatePresence>
           {viewMode === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -1600,7 +1462,29 @@ const StatusFilterTabs: React.FC<StatusFilterTabsProps> = ({ activeFilter, onFil
 // 8. KOMPONEN UTAMA HALAMAN
 // =========================================================================
 export default function ConsumptionOrderPage() {
-    const [history, setHistory] = useState<Order[]>(mockHistory);
+    // Load history dari localStorage atau gunakan array kosong sebagai default
+    // Histori akan tersimpan permanen agar bisa dicek di hari berikutnya
+    const [history, setHistory] = useState<Order[]>(() => {
+        if (typeof window !== 'undefined') {
+            const savedHistory = localStorage.getItem('consumptionOrderHistory');
+            if (savedHistory) {
+                try {
+                    const parsed = JSON.parse(savedHistory);
+                    // Convert string dates back to Date objects
+                    return parsed.map((order: Order) => ({
+                        ...order,
+                        tanggalPengiriman: new Date(order.tanggalPengiriman),
+                        tanggalPermintaan: new Date(order.tanggalPermintaan)
+                    }));
+                } catch (e) {
+                    console.error('Error parsing saved history:', e);
+                    return [];
+                }
+            }
+        }
+        return [];
+    });
+    
     const [isFormVisible, setIsFormVisible] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false);
     const [isDeleteAllConfirmOpen, setDeleteAllConfirmOpen] = useState(false);
@@ -1615,6 +1499,13 @@ export default function ConsumptionOrderPage() {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
+
+    // Simpan history ke localStorage setiap kali berubah
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('consumptionOrderHistory', JSON.stringify(history));
+        }
+    }, [history]);
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
@@ -1865,6 +1756,7 @@ export default function ConsumptionOrderPage() {
                         onDelete={handleDelete} 
                         onViewDetails={setOrderDetails} 
                         viewMode={viewMode}
+                        totalHistoryCount={history.length}
                     />
 
                     <div className="mt-6">
