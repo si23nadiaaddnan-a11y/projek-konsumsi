@@ -882,6 +882,47 @@ const OrderFormContent: React.FC<OrderFormProps> = ({ initialData, onSubmit, onC
                     <CardDescription>
                         {isSuccessful ? (<span className="text-green-600 font-medium">Pesanan Anda berhasil dikirim!</span>) : ("Silahkan Isi Pengajuan Pemesanan Konsumsi Anda.")}
                     </CardDescription>
+                    
+                    {/* Informasi Order dan Transaksi */}
+                    {!isSuccessful && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                            {/* Informasi Order */}
+                            <div className="bg-gradient-to-br from-violet-50 to-violet-100 dark:from-violet-950/50 dark:to-violet-900/50 p-4 rounded-lg border border-violet-200 dark:border-violet-800">
+                                <div className="flex items-start gap-3">
+                                    <div className="p-2 bg-white dark:bg-violet-900 rounded-lg">
+                                        <svg className="w-6 h-6 text-violet-600 dark:text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10" strokeWidth="2"/>
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6l4 2"/>
+                                        </svg>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-semibold text-violet-900 dark:text-violet-100 mb-2">Informasi Order</h3>
+                                        <ul className="space-y-1 text-sm text-violet-700 dark:text-violet-300">
+                                            <li>• Order dilakukan minimal H-1 kegiatan</li>
+                                            <li>• Order dapat dilakukan pada pukul 07:00 - 14:00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            {/* Informasi Transaksi */}
+                            <div className="bg-gradient-to-br from-amber-50 to-amber-100 dark:from-amber-950/50 dark:to-amber-900/50 p-4 rounded-lg border border-amber-200 dark:border-amber-800">
+                                <div className="flex items-start gap-3">
+                                    <div className="p-2 bg-white dark:bg-amber-900 rounded-lg">
+                                        <svg className="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                        </svg>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h3 className="font-semibold text-amber-900 dark:text-amber-100 mb-2">Informasi Transaksi</h3>
+                                        <p className="text-sm text-amber-700 dark:text-amber-300">
+                                            Informasi untuk pemesanan order wajib di approve oleh approval
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </CardHeader>
 
                 {isSuccessful ? (
@@ -927,7 +968,7 @@ const OrderFormContent: React.FC<OrderFormProps> = ({ initialData, onSubmit, onC
                 ) : (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                         <form onSubmit={handleReviewSubmit}>
-                            <CardContent className="grid gap-6 p-6 max-h-[75vh] overflow-y-auto">
+                            <CardContent className="grid gap-6 p-6 max-h-[55vh] overflow-y-auto">
 
                                 {/* KATEGORI 1: INFORMASI UMUM */}
                                 <div className="space-y-4 pt-4 border-t">
@@ -1506,6 +1547,33 @@ export default function ConsumptionOrderPage() {
             localStorage.setItem('consumptionOrderHistory', JSON.stringify(history));
         }
     }, [history]);
+
+    // [BARU] Hapus data mock yang ID-nya dimulai dengan "ORD" (buatan sistem, bukan user)
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const savedHistory = localStorage.getItem('consumptionOrderHistory');
+            if (savedHistory) {
+                try {
+                    const parsed = JSON.parse(savedHistory);
+                    // Filter out mock data (ID dimulai dengan "ORD")
+                    const realUserOrders = parsed.filter((order: Order) => !order.id.startsWith('ORD'));
+                    
+                    // Jika ada data yang dihapus, update localStorage dan state
+                    if (realUserOrders.length !== parsed.length) {
+                        const convertedOrders = realUserOrders.map((order: Order) => ({
+                            ...order,
+                            tanggalPengiriman: new Date(order.tanggalPengiriman),
+                            tanggalPermintaan: new Date(order.tanggalPermintaan)
+                        }));
+                        setHistory(convertedOrders);
+                        localStorage.setItem('consumptionOrderHistory', JSON.stringify(realUserOrders));
+                    }
+                } catch (e) {
+                    console.error('Error cleaning mock data:', e);
+                }
+            }
+        }
+    }, []); // Hanya run sekali saat mount
 
     useEffect(() => {
         let timer: NodeJS.Timeout;
