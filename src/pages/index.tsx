@@ -334,12 +334,12 @@ const waktuOptions = [
 
 // Data untuk logika cascading
 const menuByTime: Record<string, string[]> = {
-    "Pagi": ["Ayam Goreng", "Anggur", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
+    "Pagi": ["Ayam Goreng", "Anggur", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack Box", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
     "Siang": ["Nasi Box", "Prasmanan", "Ayam Goreng", "Anggur", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
     "Sore": ["Snack Box", "Coffee Break", "Ayam Goreng", "Anggur", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
     "Malam": ["Nasi Box", "Prasmanan", "Ayam Goreng", "Anggur", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
     "Sahur": ["Nasi Box", "Ayam Gorenng", "Sate Maranggi Sapi", "Air Mineral", "Buah-buahan"],
-    "Buka Puasa": ["Nasi Box", "Prasmanan", "Takjil"],
+    "Buka Puasa": ["Nasi Box", "Prasmanan", "Takjil",],
     "Snack Malam": ["Snack Box", "Nescafe", "Kopi"],
     "Tengah Malam": ["Nasi Box", "Nescafe", "Kopi", "Ayam Goreng"],
 };
@@ -347,10 +347,10 @@ const menuByTime: Record<string, string[]> = {
 // [DIKEMBALIKAN] Data menu berdasarkan tipe tamu
 const menuByGuestType: Record<string, string[]> = {
     "VVIP": ["Ayam Goreng", "Anggur", "Takjil", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack", "Kopi Kapal Api Special Mix", "Indocafe Coffemix", "Paket Sembako", "Buah-Buahan", "Creamer", "Teh Celup", "Milo", "Telor Rebus", "Jamuan Diluar Kawasan", "Susu Ultra", "Jeruk Manis", "Pisang Sunpride", "Nasi Putih/Timbel", "Sate Maranggi Sapi", "Parasmanan", "Pocari Sweat", "Teh Kotak", "Aneka Pepes"],
-    "VIP": ["Prasmanan", "Nasi Box", "Takjil", "Snack", "Ayam Goreng", "Anggur", "Takjil", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack"],
-    "Standar": ["Nasi Box", "Snack Box", "Bubur Ayam", "Coffee Break", "Galon"],
-    "Regular": ["Nasi Box", "Snack Box", "Bubur Ayam", "Galon"],
-    "PERTA": ["Nasi Box", "Snack Box", "Coffee Break", "Bubur Ayam"],
+    "VIP": ["Prasmanan", "Nasi Box", "Galon", "Takjil", "Snack", "Ayam Goreng", "Anggur", "Takjil", "Air Mineral", "Snack Kering", "Snack Pagi", "GKT", "Ketupat Lebaran", "Permen", "Mie Instan", "Teh Sariwangi", "Nescafe", "Roti Manis", "Snack"],
+    "Standar": ["Nasi Box", "Snack Box", "Galon", "Bubur Ayam", "Coffee Break", "Galon", "Roti Manis","Ketupat Lebaran"],
+    "Regular": ["Nasi Box", "Snack Box", "Bubur Ayam", "Galon", "Ketupat Lebaran", "Roti Manis"],
+    "PERTA": ["Nasi Box", "Snack Box", "Coffee Break", "Galon", "Bubur Ayam", "Ketupat Lebaran", "Roti Manis"],
 };
 
 // [DIPERBAIKI] Tipe diubah menjadi Record<string, string[]> dan koma yang hilang ditambahkan
