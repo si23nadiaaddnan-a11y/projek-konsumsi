@@ -1455,9 +1455,10 @@ interface StatusFilterTabsProps {
     activeFilter: OrderStatus | 'All';
     onFilterChange: (status: OrderStatus | 'All') => void;
     counts: Record<OrderStatus | 'All', number>;
+    isMounted?: boolean; // [BARU] Flag untuk hydration
 }
 
-const StatusFilterTabs: React.FC<StatusFilterTabsProps> = ({ activeFilter, onFilterChange, counts }) => {
+const StatusFilterTabs: React.FC<StatusFilterTabsProps> = ({ activeFilter, onFilterChange, counts, isMounted = true }) => {
     const filters: { label: string; value: OrderStatus | 'All'; icon: React.ElementType }[] = [
         { label: "All", value: "All", icon: ListTodo },
         { label: "Menunggu", value: "Pending", icon: FolderClock },
@@ -1484,14 +1485,16 @@ const StatusFilterTabs: React.FC<StatusFilterTabsProps> = ({ activeFilter, onFil
                     >
                         <Icon className="h-4 w-4" />
                         <span>{filter.label}</span>
-                        <span className={cn(
-                            "ml-1 text-xs font-bold px-2 py-0.5 rounded-full",
-                            activeFilter === filter.value 
-                                ? "bg-white text-violet-700"
-                                : "bg-violet-200 dark:bg-violet-700 text-violet-600 dark:text-violet-300"
-                        )}>
-                            {counts[filter.value]}
-                        </span>
+                        {isMounted && (
+                            <span className={cn(
+                                "ml-1 text-xs font-bold px-2 py-0.5 rounded-full",
+                                activeFilter === filter.value 
+                                    ? "bg-white text-violet-700"
+                                    : "bg-violet-200 dark:bg-violet-700 text-violet-600 dark:text-violet-300"
+                            )}>
+                                {counts[filter.value]}
+                            </span>
+                        )}
                     </Button>
                 );
             })}
@@ -1530,6 +1533,7 @@ export default function ConsumptionOrderPage() {
     const [isSuccessful, setIsSuccessful] = useState(false);
     const [isDeleteAllConfirmOpen, setDeleteAllConfirmOpen] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
+    const [isMounted, setIsMounted] = useState(false); // [BARU] Track mounting untuk hydration
 
     // State untuk Dialog
     const [orderDetails, setOrderDetails] = useState<Order | null>(null);
@@ -1540,6 +1544,11 @@ export default function ConsumptionOrderPage() {
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [currentPage, setCurrentPage] = useState(1);
     const perPage = 6;
+
+    // [BARU] Set mounted state setelah component mount
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     // Simpan history ke localStorage setiap kali berubah
     useEffect(() => {
@@ -1768,7 +1777,7 @@ export default function ConsumptionOrderPage() {
                 <CardContent className="p-6 pt-0">
                     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
                         <div className="w-full sm:w-auto">
-                            <StatusFilterTabs activeFilter={activeStatusFilter} onFilterChange={setActiveStatusFilter} counts={statusCounts} />
+                            <StatusFilterTabs activeFilter={activeStatusFilter} onFilterChange={setActiveStatusFilter} counts={statusCounts} isMounted={isMounted} />
                         </div>
                         
                         <div className="flex items-center gap-2 self-start sm:self-center flex-shrink-0">
